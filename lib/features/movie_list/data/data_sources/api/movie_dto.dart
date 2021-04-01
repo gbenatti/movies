@@ -1,4 +1,4 @@
-import 'package:Movies/features/movie_list/domain/entities/movie.dart';
+import 'package:Movies/features/movie_list/data/models/movie_model.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'movie_dto.g.dart';
@@ -49,8 +49,8 @@ class MovieDto {
       _$MovieDtoFromJson(json);
   Map<String, dynamic> toJson() => _$MovieDtoToJson(this);
 
-  Movie toEntity() {
-    return Movie(
+  MovieModel toModel() {
+    return MovieModel(
       id: id,
       posterPath: posterPath,
       adult: adult,

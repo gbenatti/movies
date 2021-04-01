@@ -1,4 +1,4 @@
-import 'package:dio/dio.dart' show Dio;
+import 'package:dio/dio.dart' show Dio, RequestOptions;
 import 'package:retrofit/dio.dart' show HttpResponse;
 import 'package:retrofit/http.dart' show GET, Query, RestApi;
 
