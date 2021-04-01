@@ -18,7 +18,7 @@ class Movie extends Equatable {
   final bool adult;
   final bool video;
 
-  Movie({
+  const Movie({
     @required this.id,
     @required this.title,
     @required this.overview,
