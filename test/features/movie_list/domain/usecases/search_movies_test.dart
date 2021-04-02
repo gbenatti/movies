@@ -20,11 +20,14 @@ void main() {
   const movieName = "Batman";
 
   test("should get list of movies from repository", () async {
+    // arrange
     when(repository.searchMovies(any))
         .thenAnswer((_) async => Right(movieList));
 
+    // act
     final result = await usecase(const Params(searchPattern: movieName));
 
+    // assert
     expect(result, Right(movieList));
     verify(repository.searchMovies(movieName));
     verifyNoMoreInteractions(repository);
