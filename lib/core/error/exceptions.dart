@@ -1,1 +1,5 @@
-class ServerException implements Exception {}
+class ServerException implements Exception {
+  final int statusCode;
+
+  ServerException({this.statusCode});
+}
