@@ -1,8 +1,8 @@
 import 'package:Movies/core/error/exceptions.dart';
+import 'package:Movies/core/error/failures.dart';
 import 'package:Movies/core/network/network_info.dart';
 import 'package:Movies/features/movie_list/data/data_sources/movie_remote_data_source.dart';
 import 'package:Movies/features/movie_list/domain/entities/movie.dart';
-import 'package:Movies/core/error/failures.dart';
 import 'package:Movies/features/movie_list/domain/repositories/movie_repository.dart';
 import 'package:dartz/dartz.dart';
 
