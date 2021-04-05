@@ -15,8 +15,13 @@ class MovieListWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.builder(
       itemCount: movies.length,
-      itemBuilder: (context, index) => MovieCard(movie: movies[index]),
+      itemBuilder: (context, index) => Padding(
+        padding: const EdgeInsets.symmetric(
+          vertical: 12.0,
+          horizontal: 8.0,
+        ),
+        child: MovieCard(movie: movies[index]),
+      ),
     );
   }
 }
-
