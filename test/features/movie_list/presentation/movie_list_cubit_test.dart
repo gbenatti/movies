@@ -11,15 +11,11 @@ import '../../../mocks.dart';
 class MockSearchMovies extends Mock implements SearchMovies {}
 
 void main() {
-  MovieListCubit cubit;
   MockSearchMovies searchMovies;
 
-  setUp(() {
-    searchMovies = MockSearchMovies();
-  });
-
   test("initialState should be empty", () async {
-    cubit = MovieListCubit(searchMovies: searchMovies);
+    final searchMovies = MockSearchMovies();
+    final cubit = MovieListCubit(searchMovies: searchMovies);
     expect(cubit.state, MovieListEmpty());
   });
 
@@ -30,6 +26,7 @@ void main() {
     blocTest<MovieListCubit, MovieListState>(
       "should emit searching and done when a valid search is run",
       build: () {
+        searchMovies = MockSearchMovies();
         when(searchMovies.call(any)).thenAnswer((_) async => Right(movies));
         return MovieListCubit(searchMovies: searchMovies);
       },
@@ -43,6 +40,7 @@ void main() {
     blocTest<MovieListCubit, MovieListState>(
       "should emit searching and error when a search has some problem",
       build: () {
+        searchMovies = MockSearchMovies();
         when(searchMovies.call(any))
             .thenAnswer((_) async => Left(ServerFailure()));
         return MovieListCubit(searchMovies: searchMovies);

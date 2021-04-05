@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
+import 'dependency_injection.dart';
+
 void main() {
+  init();
   runApp(MyApp());
 }
 
