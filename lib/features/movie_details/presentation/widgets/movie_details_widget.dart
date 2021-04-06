@@ -19,6 +19,7 @@ class MovieDetailsWidget extends StatelessWidget {
           Image.network(
             _imagePathUrl + movie.posterPath,
             width: MediaQuery.of(context).size.width,
+            height: 500,
             fit: BoxFit.fitWidth,
           ),
           Padding(
