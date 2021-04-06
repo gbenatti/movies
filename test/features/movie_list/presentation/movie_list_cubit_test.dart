@@ -1,6 +1,6 @@
 import 'package:Movies/core/error/failures.dart';
 import 'package:Movies/features/movie_list/domain/usecases/search_movies.dart';
-import 'package:Movies/features/movie_list/presentation/cubits/cubit/movie_list_cubit.dart';
+import 'package:Movies/features/movie_list/presentation/cubits/movie_list_cubit.dart';
 import 'package:bloc_test/bloc_test.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';

@@ -1,7 +1,8 @@
-import 'package:Movies/features/movie_list/presentation/cubits/cubit/movie_list_cubit.dart';
+import 'package:Movies/features/movie_list/presentation/cubits/movie_list_cubit.dart';
 import 'package:Movies/features/movie_list/presentation/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_search_bar/flutter_search_bar.dart';
 
 import '../../../../dependency_injection.dart';
 
@@ -12,25 +13,52 @@ class MovieListPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => sl<MovieListCubit>(),
-      child: Builder(
-        builder: (context) => Scaffold(
-          appBar: AppBar(
-            title: const Text("Filmes"),
-            actions: [
-              IconButton(
-                icon: const Icon(Icons.search),
-                onPressed: () => _showSearchField(context),
-              ),
-            ],
-          ),
-          body: _buildBody(),
-        ),
-      ),
+      child: const MovieListSearchPage(),
+    );
+  }
+}
+
+class MovieListSearchPage extends StatefulWidget {
+  const MovieListSearchPage({Key key}) : super(key: key);
+
+  @override
+  _MovieListSearchPageState createState() => _MovieListSearchPageState();
+}
+
+class _MovieListSearchPageState extends State<MovieListSearchPage> {
+  SearchBar searchBar;
+
+  @override
+  void initState() {
+    searchBar = SearchBar(
+      inBar: false,
+      buildDefaultAppBar: _buildAppBar,
+      setState: setState,
+      onSubmitted: _submit,
+    );
+    super.initState();
+  }
+
+  void _submit(String term) {
+    final movieList = context.read<MovieListCubit>();
+    movieList.search(term);
+  }
+
+  AppBar _buildAppBar(BuildContext context) {
+    return AppBar(
+      title: const Text("Filmes"),
+      actions: [
+        searchBar.getSearchAction(context),
+      ],
     );
   }
 
-  void _showSearchField(BuildContext context) {
-    BlocProvider.of<MovieListCubit>(context).search("Batman");
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: searchBar.build(context),
+      body: _buildBody(),
+    );
   }
 
   Widget _buildBody() {
