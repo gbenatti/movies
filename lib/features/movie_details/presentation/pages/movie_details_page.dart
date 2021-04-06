@@ -1,6 +1,8 @@
 import 'package:Movies/features/movie_list/domain/entities/movie.dart';
 import 'package:flutter/material.dart';
 
+import '../widgets/movie_details_widget.dart';
+
 class MovieDetailsPage extends StatelessWidget {
   final Movie movie;
 
@@ -15,7 +17,9 @@ class MovieDetailsPage extends StatelessWidget {
       appBar: AppBar(
         title: Text(movie.title),
       ),
-      body: Container(),
+      body: MovieDetailsWidget(movie: movie),
+      backgroundColor: Colors.white,
     );
   }
 }
+
