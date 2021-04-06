@@ -1,3 +1,4 @@
+import 'package:Movies/features/movie_details/presentation/pages/movie_details_page.dart';
 import 'package:Movies/features/movie_list/presentation/cubits/movie_list_cubit.dart';
 import 'package:Movies/features/movie_list/presentation/widgets/widgets.dart';
 import 'package:flutter/material.dart';
@@ -85,11 +86,9 @@ class _MovieListSearchPageState extends State<MovieListSearchPage> {
     } else if (state is MovieListSearchDone) {
       return MovieListWidget(
         movies: state.movies,
-        onDetails: (movie) => showDialog(
-          context: context,
-          builder: (context) => AlertDialog(
-            title: Text(movie.title),
-          ),
+        onDetails: (movie) => Navigator.push(
+          context,
+          MaterialPageRoute(builder: (_) => MovieDetailsPage(movie: movie)),
         ),
       );
     }
