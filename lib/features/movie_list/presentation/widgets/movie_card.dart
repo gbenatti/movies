@@ -8,9 +8,11 @@ class MovieCard extends StatelessWidget {
   const MovieCard({
     Key key,
     @required this.movie,
+    @required this.onDetails,
   }) : super(key: key);
 
   final Movie movie;
+  final void Function() onDetails;
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +52,7 @@ class MovieCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               FlatButton(
-                onPressed: () {},
+                onPressed: onDetails,
                 textColor: Theme.of(context).accentColor,
                 child: const Text("DETALHES"),
               ),

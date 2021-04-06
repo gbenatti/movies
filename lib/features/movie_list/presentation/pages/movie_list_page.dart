@@ -83,7 +83,15 @@ class _MovieListSearchPageState extends State<MovieListSearchPage> {
     } else if (state is MovieListSearching) {
       return const LoadingWidget();
     } else if (state is MovieListSearchDone) {
-      return MovieListWidget(movies: state.movies);
+      return MovieListWidget(
+        movies: state.movies,
+        onDetails: (movie) => showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+            title: Text(movie.title),
+          ),
+        ),
+      );
     }
 
     return Container();

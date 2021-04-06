@@ -5,10 +5,12 @@ import 'movie_card.dart';
 
 class MovieListWidget extends StatelessWidget {
   final List<Movie> movies;
+  final Function(Movie) onDetails;
 
   const MovieListWidget({
     Key key,
     this.movies,
+    this.onDetails,
   }) : super(key: key);
 
   @override
@@ -20,7 +22,10 @@ class MovieListWidget extends StatelessWidget {
           vertical: 12.0,
           horizontal: 8.0,
         ),
-        child: MovieCard(movie: movies[index]),
+        child: MovieCard(
+          movie: movies[index],
+          onDetails: onDetails != null ? () => onDetails(movies[index]) : null,
+        ),
       ),
     );
   }
