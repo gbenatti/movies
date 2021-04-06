@@ -12,6 +12,7 @@ class MovieRemoteDataSourceImpl implements MovieRemoteDataSource {
   Future<List<MovieModel>> searchMovies(String searchPattern) async {
     final result = await api.searchMovie(searchPattern);
     final statusCode = result.response.statusCode;
+    
     if (statusCode >= 200 && statusCode < 300) {
       return result.data.results.map((e) => e.toModel()).toList();
     } else {
