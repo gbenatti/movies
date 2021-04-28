@@ -5,7 +5,7 @@ import 'package:Movies/features/movie_list/data/data_sources/movie_remote_data_s
 import 'package:Movies/features/movie_list/data/repositories/movie_repository_impl.dart';
 import 'package:Movies/features/movie_list/domain/repositories/movie_repository.dart';
 import 'package:Movies/features/movie_list/presentation/cubits/movie_list_cubit.dart';
-import 'package:data_connection_checker/data_connection_checker.dart';
+import 'package:connectivity/connectivity.dart';
 import 'package:get_it/get_it.dart';
 
 import 'features/movie_list/domain/usecases/search_movies.dart';
@@ -35,6 +35,6 @@ void init() {
   sl.registerLazySingleton<NetworkInfo>(() => NetworkInfoImpl(sl()));
 
 // External
-  sl.registerLazySingleton(() => DataConnectionChecker());
+  sl.registerLazySingleton(() => Connectivity());
   sl.registerLazySingleton<TmdbApi>(() => TmdbApi.client());
 }
