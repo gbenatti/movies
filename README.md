@@ -4,8 +4,12 @@
 
 To run the app, execute:
 
-flutter pub get
+fvm use
 
-flutter pub run build_runner build --delete-conflicting-outputs
+select 2.0.6 version
+
+fvm flutter pub get
+
+fvm flutter pub run build_runner build --delete-conflicting-outputs
 
 flutter run
